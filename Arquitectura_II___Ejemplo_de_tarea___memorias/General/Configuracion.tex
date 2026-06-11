@@ -1,0 +1,106 @@
+%-------------------------------------------------------
+%Página de la configuración
+%-------------------------------------------------------
+
+%Margenes
+\setlength{\hoffset}{0pt}
+\setlength{\voffset}{0pt}
+\setlength{\topmargin}{-50pt}
+\setlength{\headheight}{23pt}
+\setlength{\headsep}{10pt}
+\setlength{\footskip}{25pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+\setlength{\marginparsep}{10pt}
+\setlength{\textheight}{640pt}
+\setlength{\textwidth}{450pt}
+
+%Página de estilos
+\fancypagestyle{preliminary}{
+    \renewcommand{\headrulewidth}{0pt}
+    \fancyhead[RCL]{}
+    \pagenumbering{Roman}
+}
+
+%Estilo de capítulos, título del capítulo, encabezado izquierdo
+\fancypagestyle{chapter}{
+    \fancyhead[L]{\normalfont\itshape\fontsize{10pt}{12pt}\selectfont\nouppercase{\leftmark}}
+    \fancyhead[R]{}
+    \renewcommand{\chaptername}{Capítulo}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0.4pt}
+    \renewcommand{\footrulewidth}{0pt}
+    \pagenumbering{arabic}
+}
+
+%Define la longitud y la escala para la línea base
+\newcommand{\headingBaseline}{12}
+\newcommand{\headingBaselineDiv}{10}
+\newlength{\chapterFontSize}
+\newlength{\sectionFontSize}
+\newlength{\subsectionFontSize}
+\newlength{\chapterBaseline}
+\newlength{\sectionBaseline}
+\newlength{\subsectionBaseline}
+
+%Tamaño de la letra del documento
+\setlength{\chapterFontSize}{14pt}
+\setlength{\sectionFontSize}{12pt}
+\setlength{\subsectionFontSize}{12pt}
+
+%% automatic computation for baseline, rule of thumb is 1.2
+\setlength{\chapterBaseline}{ \chapterFontSize * \headingBaseline / \headingBaselineDiv}
+\setlength{\sectionBaseline}{ \sectionFontSize * \headingBaseline / \headingBaselineDiv}
+\setlength{\subsectionBaseline}{ \subsectionFontSize * \headingBaseline / \headingBaselineDiv}
+
+%Título 1 – Arial, 14, Bold, Espaciado 1.5 entre párrafos, Justificado
+\titleformat{\chapter}[display]
+    {\normalfont\bfseries\fontsize{14pt}{18pt}\selectfont}{Capítulo \thechapter}{20pt}{\bfseries}
+\titlespacing*{\chapter}{0pt}{1.0em}{1.0em}
+
+% Título 2 – Arial, 12, Bold, Espaciado 1.5 entre párrafos, Justificado
+\titleformat{\section}[hang]
+    {\normalfont\bfseries\fontsize{12pt}{15pt}\selectfont}{\thesection}{12pt}{}
+\titlespacing*{\section}{0pt}{1.0em}{1.0em}
+
+%Título 3 – Arial, 11, Bold, Espaciado 1.5 entre párrafos, Justificado
+\titleformat{\subsection}[hang]
+    {\normalfont\bfseries\fontsize{11pt}{13pt}\selectfont}{\thesubsection}{10pt}{}
+%\titlespacing*{\subsection}{0pt}{0pt}{1.5em}
+\titlespacing*{\subsection}{0pt}{1.0em}{1.0em}
+
+%Título 4 – Arial, 11, Itálica, Espaciado 1.5 entre párrafos, Justificado
+\titleformat{\subsubsection}[hang]
+    {\normalfont\itshape\fontsize{11pt}{13pt}\selectfont}{\thesubsubsection}{8pt}{}
+%\titlespacing*{\subsubsection}{0pt}{0pt}{1.5em}
+\titlespacing*{\subsubsection}{0pt}{0pt}{0em}
+
+%Tabla de contenidos
+\renewcommand*\contentsname{Tabla de contenido}
+\setcounter{tocdepth}{1} 
+\setcounter{secnumdepth}{1}
+
+%Tabla de figuras
+\renewcommand*\listfigurename{Tabla de figuras}
+
+%Configuración de la bibliografía
+\DeclareBibliographyCategory{cited}
+\AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
+\addbibresource{General/Bibliografia.bib}
+
+%% hyperref setup
+\hypersetup{
+    colorlinks = true,
+    linkcolor = blue, % normal internal links, like ref, can be black tbh
+    citecolor = blue, % bibliographical links
+    urlcolor = blue, % linked urls
+    filecolor = black % url which open local files
+}
+
+\newcommand\eref[1]{equation~(\ref{#1})}
+\newcommand\tref[1]{table~\ref{#1}}
+\newcommand\fref[1]{figure~\ref{#1}}
+
+\setstretch{1.0}
+%\setlength{\parskip}{1.0em}
+

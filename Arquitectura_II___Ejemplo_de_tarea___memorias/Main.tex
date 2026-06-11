@@ -1,0 +1,53 @@
+%--------------------------------------------------------------
+%Curso: ELEC-124 Diseño de Sistemas III
+%Tarea 1
+%Estudiantes: José Luis Medrano Cerdas
+%--------------------------------------------------------------
+
+%Define el tipo de documento
+\documentclass[11pt,letterpaper]{report}
+
+%Define las entradas relacionadas al documento
+\input{General/Paquetes principales}
+\input{General/Configuracion}
+
+%Define el inicio del documento
+\begin{document}
+    \dominitoc
+
+    %Portada
+    \pagestyle{empty}
+    \begingroup
+        \input{General/TituloPagina}
+    \endgroup
+    \clearpage
+
+    %Índices y contenido del documento
+    \pagestyle{preliminary}
+    \begingroup
+        \setstretch{1.0}
+        \setlength{\parskip}{0pt}
+        \hypersetup{linkcolor=black}
+        \tableofcontents
+        \listoffigures
+    \endgroup
+    
+    \clearpage
+    \pagestyle{chapter}
+    \titleformat{\chapter}[display]
+    {\centering\fontsize{16}{16}\selectfont\bfseries}
+        {Capítulo \thechapter}
+        {0em}
+        {\vspace{0.3\baselineskip}
+    }
+
+    % Capítulos del documento
+    \subfile{Capitulos/1. Introducción}
+    \subfile{Capitulos/2. Desarrollo}
+    \subfile{Capitulos/3. Conclusiones}
+    \clearpage
+
+%Define la bibliografía
+    \label{Bibliografia}
+    \printbibliography[title={Referencias bibliográficas}, heading=bibintoc, resetnumbers=true]
+\end{document}

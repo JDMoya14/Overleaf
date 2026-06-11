@@ -1,0 +1,90 @@
+\documentclass[../Main]{subfiles}
+\begin{document}
+    \chapter{Desarrollo}
+        Para el análisis de algunas característica de una memoria EPROM se plantea mostrar las formas del cálculos de los siguientes aspectos \cite{documentoTarea1}:
+        \vspace{0.3cm}
+        
+        Para una memoria del tipo EPROM con el modelo 27C64 y utilizando la datasheet realizar los siguientes cálculos:
+        \begin{enumerate}
+            \item Basado en la tabla de pines o diagrama eléctrico del chip (DIP/SOIC) indicar la cantidad de bits del bus de direcciones.
+            \item Basado en la tabla de pines o diagrama eléctrico del chip (DIP/SOIC) indicar la cantidad de bits del bus de datos.
+            \item Mostrar el cálculo de la cantidad de celdas que posee la memoria.
+            \item Mostrar el cálculo de la capacidad que posee la memoria.
+            \item Calcular la dirección inicial de la memoria haciendo uso de una tabla donde se representen los diferentes pines del bus de direcciones y valor para la primera posición de memoria.
+            \item Calcular la dirección final de la memoria haciendo uso de una tabla donde se representen los diferentes pines del bus de direcciones y valor para la posición final de memoria.
+        \end{enumerate}    
+
+        A continuación la respuesta de cada punto:
+
+        \section{Bus de direcciones}
+            Utilizando como base el datasheet del fabricante, se pudo determinar mediante la Fig. \ref{Fig: Diagrama de bloques de la memoria} que la memoria 27C64 posee como terminales de entrada las etiquetas desde $A_0-A_{12}$.
+
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=0.6\linewidth]{Figuras/Diagrama de bloques.png}
+                \caption{Diagrama de bloques de la memoria}
+                \label{Fig: Diagrama de bloques de la memoria}
+            \end{figure}
+
+            Según este diagrama y el análisis de los pines, puede concluirse que la memoria posee 13 bits de bus de direcciones.
+
+        \section{Bus de datos}
+            Sobre el concepto de bus de datos, recordar que estas terminales se pueden reconocer con la palabra O, del inglés \textit{output}, de manera que mediante la Fig. \ref{Fig: Diagrama de bloques de la memoria} se puede reconocer, que la memoria en análisis posee 8 bits de bus de datos.
+
+        \section{Cantidad de celdas}
+            Para lograr conocer la cantidad de celdas de una arquitectura puede utilizarse como formula general la Ec. \ref{Ec: Ecuacion sobre combinaciones binarias}, la cual posee como base que n es la cantidad de bits del bus de direcciones.
+
+            \begin{equation}
+                \text{Cantidad de celdas} = 2^n
+                \label{Ec: Ecuacion sobre combinaciones binarias}
+            \end{equation}
+
+            Para el ejemplo en análisis, el bus de direcciones es de 13 bits, por tanto el cálculo es:
+            \begin{equation}
+                \text{Cantidad de celdas} = 2^{13}=8192
+            \end{equation}   
+
+            Como resultado, se puede interpretar que la memoria EPROM 27C64 posee 8192 celdas, representado en una matriz con un total de 512 filas con 16 columnas.
+
+        \section{Capacidad de la memoria}
+            Esta variable demanda el uso del concepto de bus de direcciones y de bus de datos, dado que es importante conocer la cantidad de celdas de la memoria y el tamaño del dato que posee cada celda, para realizar este calculo se utiliza la Ec. \ref{Ec: Ecuación de la capacidad}.
+
+            \begin{equation}
+                \text{Capacidad de memoria}=\text{Celdas totales x Ancho del bus en bits}
+                \label{Ec: Ecuación de la capacidad}
+            \end{equation}
+
+            Con el Ec. \ref{Ec: Ecuación de la capacidad} puede realizarse el calculo con los datos antes recopilados.
+
+            \begin{equation}
+                Capacidad=2^n \cdot m
+            \end{equation}
+
+            \begin{equation}
+                Capacidad=2^{13} \cdot \text{8 bits}
+            \end{equation}
+
+            \begin{equation}
+                Capacidad=8KB
+            \end{equation}
+
+            La memoria 27C64 posee una capacidad de 8KB, esto como resultado de analizar la cantidad de bits del bus direcciones y del bus de datos.
+            
+        \section{Direcciones}
+            Para conocer las direcciones principales de una memoria, la primera y la ultima permiten generar la idea global, por este motivo en la Figura \ref{Fig: Datos de la primera y ultima dirección} se muestra como se obtuvo la primera dirección de memoria, la cual se calcula conociendo que todos los pines del bus de direcciones de esa memoria se colocan con valor 0b y para la última dirección se establecen valores 1b.
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=1\linewidth]{Figuras/Tabla.png}
+                \caption{Datos de la primera y ultima dirección}
+                \label{Fig: Datos de la primera y ultima dirección}
+            \end{figure}
+
+            Los resultados obtenidos son:
+            \begin{itemize}
+                \item Primea dirección de memoria es 0000H.
+                \item Ultima dirección de memoria es 1FFFH
+            \end{itemize}
+
+        Con todos los cálculos mostrados, es posible tener una idea global de como esta compuesta la memoria 27C64.
+\end{document}
